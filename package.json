@@ -1,0 +1,38 @@
+{
+  "name": "weather_application",
+  "version": "1.0.0",
+  "description": "weather app ",
+  "main": "weather.js",
+  "scripts": {
+    "test": "test",
+    "start": "node weather.js",
+    "build-js": "browserify js/main.js > js/findem.js",
+    "watch-js": "watchify js/main.js -o js/findem.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asha-art/Weather_zipcode.git"
+  },
+  "keywords": [
+    "weather",
+    "zipcode"
+  ],
+  "author": "Asha Kadekoppa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asha-art/Weather_zipcode/issues"
+  },
+  "homepage": "https://github.com/Asha-art/Weather_zipcode#readme",
+  "devDependencies": {
+    "browserify": "latest",
+    "watchify": "latest"
+  },
+  "dependencies": {
+    "jquery": "^3.5.0",
+    "jsdom": "^16.2.2",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.28",
+    "request": "^2.88.2",
+    "watchify": "^3.11.1"
+  }
+}

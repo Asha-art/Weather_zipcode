@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,75 +10,30 @@
    
 </head>
 <body>
-   <div class="weather">
+<div class="weather">
     <div class = "input">
         <h1>Get the weather here!</h1>
         <input class="zipcode" placeholder="Enter the zipcode"></input>
         <button class="button">Enter</button>
     </div>
+
     <div class="display">
         <p class="city"></p>
-      <p class="temp"></p>
-      <p class="humidity"></p>
+        <p class="timezone"></p>
+        <p class="temp"></p>
+        <!-- <p class="icon"></p> -->
+        <p class="lowHigh"></p><br>
+        <p class="humidity"></p>
     </div>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- <script src="weather.js"></script> -->
+    <!-- Add this to your html as a CDN above your .js script: -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.11/moment-timezone-with-data.js"></script>
+    <script src="weather.js"></script>
    
-
-
-  <script>
-      $(document).ready(function(){
-    $('.button').click(function(){
-        var zipcode = $(".zipcode").val();
-        var key = '3874ba64c15c3a576a52afc64374f3a0';
-        $.ajax({
-            url: 'http://api.openweathermap.org/data/2.5/weather',
-            dataType:'json',
-            type: 'GET',
-            data:{ zip:zipcode, appid:key, units:'imperial'},
-       
-                success: function(data){
-                    var x='';
-                    var y='';
-                    var city ='';
-                    $.each(data.weather, function(index,val){
-                    
-                   city =city+data.name + ", "+data.sys.country;
-                    x = x +  data.main.temp + "&deg F " ;
-                     y=y+ "Humidity: "+data.main.humidity + "%   "+val.description;
-                     
-                     //timezone
-                     if (navigator.geolocation) {
-    //Return the user's longitude and latitude on page load using HTML5 geolocation API
-         window.onload = function () { 
-                 var currentPosition;  
-        function getCurrentLocation (position) {      
-                 currentPosition = position;     
-                 latitude = currentPosition.coords.latitude;     
-                 longitude = currentPosition.coords.longitude;
-        //AJAX request
-        $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&APPID=3874ba64c15c3a576a52afc64374f3a0", 
-        function (data) {            
-            var rawJson = JSON.stringify(data);           
-             var json = JSON.parse(rawJson);           
-              updateWeather(json); //Update Weather parameters     
-               });   
-             }
-    navigator.geolocation.getCurrentPosition(getCurrentLocation);
-    };
-                };
-                    $(".city").html(city);
-                    $(".temp").html(x);
-                    $(".humidity").html(y);
-                });
-
-        }
-     });
-    })
-});
-  </script>
   </body>
   </html>
    
